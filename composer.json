@@ -1,0 +1,46 @@
+{
+    "name": "dreebit/queue-doctrine-mongo-odm",
+    "description": "Zend Framework 2 module that integrates Doctrine Mongo ODM as queuing system",
+    "license": "BSD-3-Clause",
+    "type": "library",
+    "keywords": [
+        "zf2",
+        "queue",
+        "job",
+        "doctrine",
+        "doctrine-odm",
+        "db",
+        "database",
+        "mongodb"
+    ],
+    "homepage": "https://bitbucket.org/dreebit/queue-doctrine-mongo-odm",
+    "authors": [
+        {
+            "name": "Nico Ziegler",
+            "email": "nico.ziegler@dreebit.com",
+            "homepage": "http://www.dreebit.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zend-config": "~2.2",
+        "zendframework/zend-mvc": "~2.2",
+        "zendframework/zend-servicemanager": "~2.2",
+        "zendframework/zend-stdlib": "~2.2",
+        "slm/queue": "~0.4.0",
+        "doctrine/doctrine-mongo-odm-module":  "~0.7"
+    },
+    "extra": {
+        "branch-alias": {
+            "master": "master"
+        }
+    },
+    "autoload": {
+        "psr-0": {
+            "SlmQueueDoctrineMongoODM": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}
