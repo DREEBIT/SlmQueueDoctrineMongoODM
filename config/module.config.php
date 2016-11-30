@@ -78,7 +78,7 @@ return array(
 	'doctrine' => array(
 		'driver' => array(
 			'SlmQueueDoctrineMongoODM' => array(
-				'class' => 'Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver',
+				'class' => Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver::class,
 				'paths' => array(__DIR__ . '/../src/SlmQueueDoctrineMongoODM/Document'),
 			),
 			'odm_default' => array(

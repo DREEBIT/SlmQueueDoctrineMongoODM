@@ -11,15 +11,23 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  */
 class DoctrineMongoODMWorkerControllerFactory implements FactoryInterface
 {
-	/**
-	 * {@inheritDoc}
-	 */
-	public function createService(ServiceLocatorInterface $serviceLocator)
-	{
-		$serviceLocator = $serviceLocator->getServiceLocator();
-		$worker = $serviceLocator->get('SlmQueueDoctrineMongoODM\Worker\DoctrineMongoODMWorker');
-		$queuePluginManager = $serviceLocator->get('SlmQueue\Queue\QueuePluginManager');
+    /**
+     * {@inheritDoc}
+     */
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = NULL)
+    {
+        $worker = $container->get(\SlmQueueDoctrineMongoODM\Worker\DoctrineMongoODMWorker::class);
+        $queuePluginManager = $container->get(\SlmQueue\Queue\QueuePluginManager::class);
 
-		return new DoctrineMongoODMWorkerController($worker, $queuePluginManager);
-	}
+        return new DoctrineMongoODMWorkerController($worker, $queuePluginManager);
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    public function createService(ServiceLocatorInterface $serviceLocator)
+    {
+        return $this($serviceLocator->getServiceLocator(), DoctrineMongoODMWorkerController::class);
+    }
 }
