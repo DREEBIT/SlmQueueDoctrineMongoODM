@@ -21,7 +21,10 @@ class DoctrineMongoODMQueueFactory implements FactoryInterface
     {
         $config = $container->get('config');
         $queuesOptions = $config['slm_queue']['queues'];
-        $options = isset($queuesOptions[$requestedName]) ? $queuesOptions[$requestedName] : [];
+        $options = array_merge_recursive(
+            isset($queuesOptions[$requestedName]) ? $queuesOptions[$requestedName] : [],
+            $options
+        );
         $queueOptions = new DoctrineMongoODMOptions($options);
 
         /** @var $documentManager \Doctrine\ODM\MongoDB\DocumentManager */
